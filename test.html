@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+        <!-- * fontawsome cdn -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  </head>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: #0c134f;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 5rem;
+}
+h3 {
+  color: #fff;
+  font-size: 2rem;
+  padding-bottom: 0.7rem;
+  letter-spacing: 1px;
+}
+
+h5 {
+  color: #fff;
+  font-size: 1rem;
+  padding-bottom: 3rem;
+}
+
+.card {
+  background-color: #fff;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 30px;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+}
+
+.img_card {
+  width: 100px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.img_card img {
+  background-position: center;
+  background-size: cover;
+  border-image: round;
+}
+.review {
+  padding-bottom: 1rem;
+}
+
+.star {
+  color: #E893CF;
+  font-size: 0.8rem;
+}
+.nextBtn,
+.prevBtn{
+    color: #C07F00;
+    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+    max-width: 45px;
+    max-height: 45px;
+    line-height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.prevBtn{
+    position: absolute;
+    top: 10%;
+    right: 14%;
+}
+.nextBtn{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+}
+.btn:hover{
+    background-color: #E893CF;
+    color: #fff;
+}
+
+
+@media only screen and (max-width: 624px){
+    .card{
+        width: 90%;
+        padding-bottom: 20px;
+    }
+
+    .prevBtn{
+        position: absolute;
+        top: 10%;
+        right: 16%;
+    }
+
+}
+  </style>
+  <body>
+    <div id="container" class="container">
+      <h3>What clients say</h3>
+      <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+
+      <div class="card">
+          <img src="img/0.jpg" width="150" id="customar_img" class="img_card" alt="">
+          <h4 class="customer_name">Customer name</h4>
+          <div class="review">
+              <span class="star">
+                  <i class="fas fa-star"></i>
+              </span>
+              <span class="star">
+                  <i class="fas fa-star"></i>
+              </span>
+              <span class="star">
+                  <i class="fas fa-star"></i>
+              </span>
+              <span class="star">
+                  <i class="fas fa-star-half"></i>
+              </span>
+          </div>
+          <button></button>
+          <p id="customer_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet consectetur error veritatis! Molestiae, numquam! Nemo natus fugiat laborum molestiae laudantium.</p>
+          <a href="#" class="btn prevBtn" data-prev><i class="fa fa-long-arrow-alt-left"></i></a>
+          <a href="#" class="btn nextBtn" data-next><i class="fa fa-long-arrow-alt-right"></i></a>
+      </div>
+  </div>
+
+    <script>
+      const customerImg = document.querySelector("#customar_img")
+      const title = document.querySelector('[data-title]')
+      const description = document.querySelector('[data-desk]')
+
+      const prevBtn = document.querySelector('.prevBtn')
+      const nextBtn = document.querySelector('.nextBtn')
+      
+      const customers = [
+        {
+          name: "John Doe",
+          image: "img/0.jpg",
+          text: "Software Engineer",
+        },
+        {
+          name: "Jane Smith",
+          image: "img/1.jpg",
+          text: "Graphic Designer",
+        },
+        {
+          name: "Bob Johnson",
+          image: "img/2.jpg",
+          text: "Web Developer",
+        },
+        {
+          name: "Alice Lee",
+          image: "img/3.jpg",
+          text: "Project Manager",
+        },
+        { name: "Tom Wilson", 
+          image: "img/4.jpg",
+          text: "Data Analyst" },
+      ];
+
+
+      console.log(customers.length);
+      for (const customer of customers) {
+        const customerTemplate = `
+
+    // <div class="customer">
+    //   <img src="${customer.image}" alt="${customer.name}">
+    //   <h2>${customer.name}</h2>
+    //   <p>${customer.text}</p>
+    // </div>
+
+
+
+    <div class="card">
+          <img src="${customer.image}" width="150" id="customar_img" class="img_card" alt="">
+          <h4 class="customer_name">${customer.name}</h4>
+          <div class="review">
+              <span class="star">
+                  <i class="fas fa-star"></i>
+              </span>
+              <span class="star">
+                  <i class="fas fa-star"></i>
+              </span>
+              <span class="star">
+                  <i class="fas fa-star"></i>
+              </span>
+              <span class="star">
+                  <i class="fas fa-star-half"></i>
+              </span>
+          </div>
+          <button></button>
+          <p id="customer_text">${customer.text}</p>
+          <a href="#" class="btn prevBtn" data-prev><i class="fa fa-long-arrow-alt-left"></i></a>
+          <a href="#" class="btn nextBtn" data-next><i class="fa fa-long-arrow-alt-right"></i></a>
+      </div>
+  `;
+          // document.body.innerHTML += customerTemplate;
+
+
+          // nextBtn.addEventListener('click' ,)
+      }
+
+
+    </script>
+  </body>
+</html>
